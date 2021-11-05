@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'ideathonwebapp'
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
@@ -126,4 +125,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-GOOGLE_API_KEY = "XXX"
+GOOGLE_API_KEY = "AIzaSyBycYunkc2ygCKEQy0UQKkOjuaWZYQHyFQ"
