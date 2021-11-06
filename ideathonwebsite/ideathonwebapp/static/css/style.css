@@ -2,7 +2,7 @@
        * element that contains the map. */
 #map {
   height: 400px;
-  width: 100%;
+  width: 90%;
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -11,4 +11,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #393534;
+  color: white;
+  /* color: #f5271c; */
 }

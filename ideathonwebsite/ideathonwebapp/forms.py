@@ -1,5 +1,7 @@
 from django import forms
 from .models import Event
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class Filter(forms.Form):
     events = Event.objects.all()
@@ -12,12 +14,12 @@ class Filter(forms.Form):
     startTimeChoices = [('','select')]
     startTimelist = list(events.values_list('startTime', flat=True))
     for item in startTimelist:
-        startTimeChoices.append( (str(item),str(item)) )
+        startTimeChoices.append( (str(item),str(item.strftime("%m/%d/%Y %I:%M %p"))) )
 
     endTimeChoices = [('','select')]
     endTimelist = list( events.values_list('endTime', flat=True))
     for item in endTimelist:
-        endTimeChoices.append( (str(item),str(item)) )
+        endTimeChoices.append( (str(item),str(item.strftime("%m/%d/%Y %I:%M %p"))) )
 
     entryCostChoices = [('','select')]
     entryCostlist = list( events.values_list('entryCost', flat=True))
@@ -34,3 +36,8 @@ class Filter(forms.Form):
     endTime = forms.ChoiceField(label = "End Time", required = False, choices = endTimeChoices)
     entryCost = forms.ChoiceField(label = "Entry Cost", required = False, choices = entryCostChoices)
     ageRange = forms.ChoiceField(label = "Age Range", required = False, choices = ageRangeChoices)
+
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
