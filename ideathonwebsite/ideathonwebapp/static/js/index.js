@@ -2,7 +2,7 @@ let map, infoWindow;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
+    center: { lat: 34, lng: -118 },
     zoom: 4,
   });
 
@@ -14,16 +14,16 @@ function initMap() {
     		position: { lat: 34, lng: -118 },
     		map: map,
   	      });
-
   uclaMarker.addListener("click", () => {
       infoWindow.close();
-      infoWindow.setContent("blmsfkls");
-      infoWindow.open(uclaMarker.getMap(), uclaMarker);
+      //infoWindow.setContent("blmsfkls");
+      //infoWindow.open(marker.getMap(), marker);
 
       var para = document.createElement("P");               // Create a <p> element
-	  para.innerText = "This is a paragraph";               // Insert text
+	  para.innerText = "bsbfsfk";               // Insert text
 	  document.body.appendChild(para);
-    });
+  });
+
 
   locationButton.textContent = "Pan to Current Location";
   locationButton.classList.add("custom-map-control-button");
@@ -72,3 +72,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   );
   infoWindow.open(map);
 }
+
+
