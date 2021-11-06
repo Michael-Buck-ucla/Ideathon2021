@@ -10,6 +10,8 @@ class Event(models.Model):
     )
 	name = models.CharField(max_length=255)
 	address = models.SlugField(unique=True, max_length=255) #need address
+	# latitude = models.FloatField()
+	# longitude = models.FloatField()
 	genre = models.CharField(max_length=255)
 	startTime = models.DateTimeField(auto_now_add=True)
 	endTime = models.DateTimeField(auto_now_add=True)
