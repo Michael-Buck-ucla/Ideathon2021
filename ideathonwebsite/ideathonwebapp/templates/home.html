@@ -13,11 +13,20 @@
   </head>
   <body>
     <h1>The Crawl</h1>
+    <form action="" method = "GET">
+        {{form}}
+        <button type="submit">Filter Events</button>
+    </form>
     <div id="map"></div>
     <script type="text/javascript">
       locations = {{locations|safe}};
     </script>
     <p id="event"></p>
+    <h1>Events</h1>
+    {% for event in events%}
+    <p>{{event}}</p>
+    <br>
+    {% endfor %}
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&v=weekly"
