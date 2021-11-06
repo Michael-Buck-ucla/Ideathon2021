@@ -7,9 +7,11 @@ from .models import Event
 # Create your views here.
 def home(request):
     event_list = Event.objects.all()
-    locations = []
+    locations = {}
+    
     for event in event_list:
-        locations.append({'lat':event.latitude, 'long':event.longitude})
+        print(event.name)
+        locations[event.name] = {'lat':event.latitude, 'long':event.longitude}
     context = {}
     context['api_key'] = settings.GOOGLE_API_KEY
     # locations = [{'lat' : 32, 'long' : 120}, {'lat' : 29, 'long' : 120}, {'lat' : 34, 'long' : 100}]

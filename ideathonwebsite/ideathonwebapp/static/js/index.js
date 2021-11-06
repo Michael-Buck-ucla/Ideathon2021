@@ -5,24 +5,25 @@ function initMap() {
     center: { lat: 34, lng: -118 },
     zoom: 4,
   });
-
-  for (var i in locations) {
+  console.log("hi");
+  console.log(locations);
+  for (const [key, value] of Object.entries(locations)) {
     const marker = new google.maps.Marker({
-      position: { lat: locations[i]["lat"], lng: locations[i]["long"] },
+      position: { lat: value["lat"], lng: value["long"] },
       map: map,
-      title: i,
+      title: key,
     });
-    console.log(i);
-    console.log(locations[i]["lat"]);
+    console.log(key);
+    // console.log(locations[i]["lat"]);
 
     marker.addListener("click", () => {
       infoWindow.close();
       //infoWindow.setContent(locations[i]["lat"]);
       //infoWindow.open(marker.getMap(), marker);
 
-      var para = document.createElement("P"); // Create a <p> element
+      var para = document.getElementById("event"); // Create a <p> element
       para.innerText = marker.getTitle(); // Insert text
-      document.body.appendChild(para);
+      // document.body.appendChild(para);
     });
   }
 
