@@ -5,43 +5,35 @@ function initMap() {
     center: { lat: 34, lng: -118 },
     zoom: 4,
   });
-  console.log("hi");
-  console.log(locations);
+  
   for (const [key, value] of Object.entries(locations)) {
     const marker = new google.maps.Marker({
       position: { lat: value["lat"], lng: value["long"] },
       map: map,
       title: key,
     });
-    console.log(key);
+    //console.log(key);
     // console.log(locations[i]["lat"]);
 
     marker.addListener("click", () => {
       infoWindow.close();
-      //infoWindow.setContent(locations[i]["lat"]);
-      //infoWindow.open(marker.getMap(), marker);
 
-      var para = document.getElementById("event"); // Create a <p> element
-      para.innerText = marker.getTitle(); // Insert text
-      // document.body.appendChild(para);
+      var theName = marker.getTitle(); 
+      document.getElementById("title").innerText = theName;
+      document.getElementById("host").innerText = "Host: " + locations[theName]["host"]; 
+      document.getElementById("start").innerText = "Start Time: " + locations[theName]["start"]; 
+      document.getElementById("end").innerText = "End Time: " + locations[theName]["end"]; 
+      document.getElementById("genre").innerText = "Genre: " + locations[theName]["genre"]; 
+      document.getElementById("num").innerText = "Number of Attendees: " + locations[theName]["num"]; 
+      document.getElementById("cost").innerText = "Entry Cost: " + locations[theName]["cost"]; 
+      document.getElementById("age").innerText = "Age Range: " + locations[theName]["age"]; 
+      
     });
   }
 
   infoWindow = new google.maps.InfoWindow();
-
-  const locationButton = document.createElement("button");
-
-  const uclaMarker = new google.maps.Marker({
-    position: { lat: 34, lng: -118 },
-    map: map,
-  });
-
-  locationButton.textContent = "Pan to Current Location";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
+  
+  if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const pos = {
@@ -49,17 +41,16 @@ function initMap() {
             lng: position.coords.longitude,
           };
 
-          const image =
-            "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+          const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
           const beachMarker = new google.maps.Marker({
             position: pos,
             map,
             icon: image,
           });
 
-          infoWindow.setPosition(pos);
-          infoWindow.setContent("Location found.");
-          infoWindow.open(map);
+          //infoWindow.setPosition(pos);
+          //infoWindow.setContent("Location found.");
+          //infoWindow.open(map);
 
           map.setCenter(pos);
           map.setZoom(15);
@@ -72,7 +63,6 @@ function initMap() {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
-  });
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

@@ -17,7 +17,17 @@
     <script type="text/javascript">
       locations = {{locations|safe}};
     </script>
-    <p id="event"></p>
+    <div id="event">
+    	<h2 id="title"></h2>
+    	<p id="host"></p>
+    	<time id="start"></time>
+    	<p id="end"></p>
+    	<p id="genre"></p>
+    	<p id="num"></p>
+    	<p id="cost"></p>
+    	<p id="age"></p>
+    </div>
+
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&v=weekly"
@@ -25,4 +35,3 @@
     ></script>
   </body>
 </html>
-

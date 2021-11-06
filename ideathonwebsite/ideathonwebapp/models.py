@@ -4,9 +4,9 @@ from django.db import models
 
 class Event(models.Model):
 	AGE_RANGES = (
-        ('AA', 'All Ages'),
-        ('18', '18+'),
-        ('21', '21+'),
+        ('All Ages', 'All Ages'),
+        ('18+', '18+'),
+        ('21+', '21+'),
     )
 	name = models.CharField(max_length=255)
 	address = models.SlugField(unique=True, max_length=255) #need address
@@ -18,6 +18,6 @@ class Event(models.Model):
 	host = models.CharField(max_length=255)
 	audienceNumber = models.IntegerField()
 	entryCost = models.FloatField()
-	ageRange = models.CharField(max_length=2, choices=AGE_RANGES)
+	ageRange = models.CharField(max_length=10, choices=AGE_RANGES)
 
 
